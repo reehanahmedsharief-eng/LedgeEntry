@@ -1,21 +1,114 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-    <meta name="color-scheme" content="light dark" />
-    <meta name="theme-color" content="#1E2430" />
-    <script>(function(){function g(){try{var raw=localStorage.getItem('ledgeentry_prefs');if(raw){var p=JSON.parse(raw);if(typeof p.darkMode==='boolean')return p.darkMode;}}catch(e){}try{var all=localStorage;for(var i=0;i<all.length;i++){var k=all.key(i);if(!k)continue;try{var r=all.getItem(k);if(r&&r.indexOf('darkMode')>-1){var pp=JSON.parse(r);if(typeof pp.darkMode==='boolean')return pp.darkMode;}}catch(e){}}}catch(e){}try{if(window.matchMedia){if(window.matchMedia('(prefers-color-scheme: light)').matches)return false;if(window.matchMedia('(prefers-color-scheme: dark)').matches)return true;}}catch(e){}return true;}var m=g();var bg=m?'#0A0E16':'#F7F8FA';document.documentElement.setAttribute('data-theme',m?'dark':'light');document.documentElement.style.background=bg;var s=document.createElement('style');s.textContent='html,body,#root{background:'+bg+' !important;margin:0}';document.head.prepend(s);})();</script>
-    <title>LedgeEntry</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
-    <script type="module" crossorigin src="./assets/index-exS-tCvW.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-BNrL5BwX.css">
-  </head>
-  <body>
-    <div id="root"></div>
-    <jeep-sqlite autoInit="true"></jeep-sqlite>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>LedgeEntry — Screenshots</title>
+<link rel="icon" href="assets/logo.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{--bg:#E4E9F2;--text:#2B3245;--sub:#6B7280;--accent:#6C7CE0;--accentText:#FFFFFF;--gold:#B4884D;--shadowD:#B7BECB;--shadowL:#FFFFFF;--card:#FFFFFF;--border:#DCE2EC}
+  [data-theme="dark"]{--bg:#1E2430;--text:#ECEFF7;--sub:#8D9AB0;--accent:#8B98F0;--accentText:#12141C;--gold:#D9B679;--shadowD:#14181F;--shadowL:#2A3140;--card:#262D3A;--border:#333B4A}
+  *{box-sizing:border-box}html,body{margin:0;padding:0}
+  body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  h1,h2,h3{font-family:'Sora',sans-serif;margin:0 0 12px}
+  .container{max-width:1180px;margin:0 auto;padding:0 24px}
+  header{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px;font-family:'Sora'}
+  .brand img{width:34px;height:34px;border-radius:10px}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:14px;border:none;cursor:pointer;font-weight:600;font-size:14px;transition:transform .2s,box-shadow .2s}
+  .btn:hover{transform:translateY(-2px) scale(1.02)}
+  .btn.primary{background:linear-gradient(135deg,var(--accent),color-mix(in srgb,var(--accent) 70%,var(--gold)));color:var(--accentText);border:2px solid color-mix(in srgb,#7EA6FF 60%,#FFFFFF);box-shadow:0 0 0 4px color-mix(in srgb,#7EA6FF 25%,transparent),0 10px 28px color-mix(in srgb,var(--accent) 40%,transparent);animation:pulseBorder 2s ease-in-out infinite}
+  @keyframes pulseBorder{0%,100%{box-shadow:0 0 0 4px color-mix(in srgb,#7EA6FF 20%,transparent),0 10px 28px color-mix(in srgb,var(--accent) 40%,transparent)}50%{box-shadow:0 0 0 8px color-mix(in srgb,#7EA6FF 35%,transparent),0 14px 34px color-mix(in srgb,var(--accent) 50%,transparent)}}
+  .btn.ghost{background:var(--card);color:var(--text);border:1px solid var(--border)}
+  .theme-toggle{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:8px 12px;cursor:pointer;font-size:14px}
+  .topnav a{position:relative;padding:6px 2px;transition:color .2s;color:var(--text);font-weight:500;font-size:14px;text-decoration:none}
+  .topnav a::after{content:'';position:absolute;left:0;bottom:0;width:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--gold));transition:width .25s;border-radius:2px}
+  .topnav a:hover{color:var(--accent)}
+  .topnav a:hover::after{width:100%}
+  .hero{padding:60px 0 20px;text-align:center}
+  .hero h1{font-size:clamp(30px,5vw,52px);line-height:1.1}
+  .hero h1 span{color:var(--accent)}
+  .hero p{max-width:640px;margin:14px auto 24px;color:var(--sub);font-size:17px}
+  .wrap{max-width:420px;margin:0 auto;text-align:center}
+  .phone{background:#0A0E16;border-radius:40px;padding:12px;box-shadow:0 30px 80px rgba(0,0,0,.35);width:320px;margin:0 auto}
+  .phone img{width:100%;border-radius:28px;display:block}
+  .cap{margin-top:14px;color:var(--sub);font-size:14px}
+  .arrows{display:flex;justify-content:center;gap:16px;margin-top:18px}
+  footer{padding:40px 0;border-top:1px solid var(--border);color:var(--sub);font-size:14px;text-align:center;margin-top:40px}
+  .canvas-bg{position:fixed;inset:0;z-index:-1;pointer-events:none}
+</style>
+</head>
+<body data-theme="light">
+<canvas id="bgCanvas" class="canvas-bg"></canvas>
+<header>
+  <div class="container nav">
+    <div class="brand"><img src="assets/logo.png" alt="LedgeEntry" /> LedgeEntry</div>
+    <nav class="topnav" style="display:flex;gap:18px;align-items:center">
+      <a href="#" style="color:var(--text);font-weight:500;font-size:14px">Home</a>
+      <a href="#download" style="color:var(--text);font-weight:500;font-size:14px">Download</a>
+    </nav>
+    <div style="display:flex;gap:10px;align-items:center">
+      <a class="btn primary" href="LedgeEntry-debug.apk" download>Download APK</a>
+    </div>
+    <button class="theme-toggle" id="themeBtn" aria-label="Toggle theme" style="position:fixed;top:18px;right:18px;z-index:100;margin:0">🌙</button>
+  </div>
+</header>
+<main class="container">
+  <section class="hero">
+    <h1>App <span>Screenshots</span></h1>
+    <p>Browse the LedgeEntry interface. Use the arrows to move between screens.</p>
+  </section>
+  <div class="wrap">
+    <div class="phone">
+      <img id="shotImg" src="assets/shot-home.png" alt="App screenshot" />
+    </div>
+    <p class="cap" id="shotCaption">Home — net worth, cash, quick access</p>
+    <div class="arrows">
+      <button id="prevShot" class="btn ghost" style="padding:10px 18px;font-size:20px">‹</button>
+      <button id="nextShot" class="btn ghost" style="padding:10px 18px;font-size:20px">›</button>
+    </div>
+    <div style="margin-top:24px">
+      <a class="btn primary" href="LedgeEntry-debug.apk" download>⬇ Download APK</a>
+    </div>
+  </div>
+</main>
+<footer>
+  <div class="container">
+    <div>LedgeEntry · Made by REEHAN AHMED SHARIFF . S</div>
+  </div>
+</footer>
+<script>
+  const shots = [
+    { src: 'assets/shot-home.png', caption: 'Home — net worth, cash, quick access' },
+    { src: 'assets/shot-ai.png', caption: 'AI Assistant — built-in & Gemini' },
+    { src: 'assets/shot-profile.png', caption: 'Profile — account & tools' },
+    { src: 'assets/shot-settings.png', caption: 'Settings — preferences & about' },
+  ];
+  let i = 0;
+  const img = document.getElementById('shotImg');
+  const cap = document.getElementById('shotCaption');
+  function show(n){ i=(n+shots.length)%shots.length; img.src=shots[i].src; cap.textContent=shots[i].caption; }
+  document.getElementById('prevShot').addEventListener('click',()=>show(i-1));
+  document.getElementById('nextShot').addEventListener('click',()=>show(i+1));
+  show(0);
 
-  </body>
+  // animated bg
+  const c=document.getElementById('bgCanvas');const ctx=c.getContext('2d');let w,h,pts=[],mouse={x:-9999,y:-9999};
+  function resize(){w=c.width=window.innerWidth;h=c.height=window.innerHeight;}
+  function init(){pts=[];for(let k=0;k<70;k++)pts.push({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-.5)*.25,vy:(Math.random()-.5)*.25});}
+  function step(){ctx.clearRect(0,0,w,h);const dark=document.body.getAttribute('data-theme')==='dark';const col=dark?'139,152,240':'108,124,224';for(const p of pts){p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>w)p.vx*=-1;if(p.y<0||p.y>h)p.vy*=-1;const dx=mouse.x-p.x,dy=mouse.y-p.y,d=Math.hypot(dx,dy);if(d<180){p.vx+=dx/d*.015;p.vy+=dy/d*.015;}const sp=Math.hypot(p.vx,p.vy);if(sp>.5){p.vx*=.5/sp;p.vy*=.5/sp;}}for(let a=0;a<pts.length;a++)for(let b=a+1;b<pts.length;b++){const dx=pts[a].x-pts[b].x,dy=pts[a].y-pts[b].y,d=Math.hypot(dx,dy);if(d<130){ctx.strokeStyle='rgba('+col+','+(1-d/130)*.35+')';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(pts[a].x,pts[a].y);ctx.lineTo(pts[b].x,pts[b].y);ctx.stroke();}}for(const p of pts){ctx.fillStyle='rgba('+col+',.8)';ctx.beginPath();ctx.arc(p.x,p.y,2.2,0,Math.PI*2);ctx.fill();}requestAnimationFrame(step);}
+  window.addEventListener('resize',()=>{resize();init();});window.addEventListener('mousemove',(e)=>{mouse.x=e.clientX;mouse.y=e.clientY;});window.addEventListener('mouseleave',()=>{mouse.x=-9999;mouse.y=-9999;});resize();init();step();
+</script>
+<script>
+  const btn = document.getElementById('themeBtn');
+  const apply = (t) => { document.body.setAttribute('data-theme', t); btn.textContent = t === 'dark' ? '☀️' : '🌙'; localStorage.setItem('le-theme', t); };
+  const saved = localStorage.getItem('le-theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  apply(saved);
+  btn.addEventListener('click', () => apply(document.body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'));
+</script>
+</body>
 </html>
