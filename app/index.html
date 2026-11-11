@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#1E2430" />
+    <script>(function(){function g(){try{var raw=localStorage.getItem('ledgeentry_prefs');if(raw){var p=JSON.parse(raw);if(typeof p.darkMode==='boolean')return p.darkMode;}}catch(e){}try{var all=localStorage;for(var i=0;i<all.length;i++){var k=all.key(i);if(!k)continue;try{var r=all.getItem(k);if(r&&r.indexOf('darkMode')>-1){var pp=JSON.parse(r);if(typeof pp.darkMode==='boolean')return pp.darkMode;}}catch(e){}}}catch(e){}try{if(window.matchMedia){if(window.matchMedia('(prefers-color-scheme: light)').matches)return false;if(window.matchMedia('(prefers-color-scheme: dark)').matches)return true;}}catch(e){}return true;}var m=g();var bg=m?'#0A0E16':'#F7F8FA';document.documentElement.setAttribute('data-theme',m?'dark':'light');document.documentElement.style.background=bg;var s=document.createElement('style');s.textContent='html,body,#root{background:'+bg+' !important;margin:0}';document.head.prepend(s);})();</script>
+    <title>LedgeEntry</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+    <script type="module" crossorigin src="./assets/index-exS-tCvW.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-BNrL5BwX.css">
+  </head>
+  <body>
+    <div id="root"></div>
+    <jeep-sqlite autoInit="true"></jeep-sqlite>
+
+  </body>
+</html>

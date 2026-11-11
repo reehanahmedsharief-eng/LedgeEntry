@@ -1,0 +1,6 @@
+{
+  "versionCode": 1,
+  "versionName": "1.00",
+  "apkUrl": "LedgeEntry-debug.apk",
+  "releaseNotes": "Data persistence fixes, notification improvements, home tile reorder, splash screen update."
+}
